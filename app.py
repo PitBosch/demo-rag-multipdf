@@ -19,6 +19,7 @@ uploaded_files = st.file_uploader("Upload PDF files", type=["pdf"], accept_multi
 if uploaded_files:
     all_splits = []
     for uploaded_file in uploaded_files:
+        print(uploaded_file)
         # Load document
         loader = PyMuPDFLoader(uploaded_file)
         data = loader.load()
