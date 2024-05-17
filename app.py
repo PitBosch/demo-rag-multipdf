@@ -1,17 +1,15 @@
 import streamlit as st
-from langchain_community.document_loaders import PyMuPDFLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+
 import os 
 import sys
-
-import bs4
+from langchain_chroma import Chroma
 from langchain import hub
-from langchain_community.document_loaders import WebBaseLoader
-
+from langchain_community.document_loaders import PyMuPDFLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+#from langchain_community.document_loaders import WebBaseLoader
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 from langchain_openai import OpenAIEmbeddings
-from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 
 os.environ["OPENAI_API_KEY"]=st.secrets["openai_api_key"]
@@ -20,8 +18,8 @@ os.environ["OPENAI_API_KEY"]=st.secrets["openai_api_key"]
 __import__('pysqlite3')
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
+import chromadb
 
-from langchain_chroma import Chroma
 
 # Upload PDF files
 
