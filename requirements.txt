@@ -5,4 +5,4 @@ langchain_openai
 langchain_chroma
 langchain_text_splitters
 pymupdf
-sqlite3
+pysqlite3-binary
