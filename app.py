@@ -51,7 +51,6 @@ if uploaded_files:
     # Add to vector store
     vectorstore = Chroma.from_documents(
         documents=all_splits,
-        collection_name="rag-chroma",
         embedding=OpenAIEmbeddings(),
     )
     retriever = vectorstore.as_retriever()
