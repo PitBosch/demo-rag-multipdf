@@ -86,5 +86,5 @@ if uploaded_files:
     # Input question
     query = st.text_input("Enter your question:")
     if query:
-        answer = chain.invoke({"__root__": query})
+        answer = rag_chain.invoke({"__root__": query})
         st.write("Answer:", answer)
