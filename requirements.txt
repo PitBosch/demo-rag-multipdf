@@ -5,4 +5,4 @@ langchain_openai
 langchain_chroma
 langchain_text_splitters
 pymupdf
-sqlite3 >= 3.35.1
+sqlite3 >= 3.35.0.0
