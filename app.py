@@ -1,15 +1,19 @@
 import streamlit as st
 from langchain_community.chat_models import ChatOpenAI
-from langchain_community.embeddings import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
-from langchain_core.output_parsers import StrOutputParser
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.pydantic_v1 import BaseModel
-from langchain_core.runnables import RunnableParallel, RunnablePassthrough
 from langchain_community.document_loaders import PyMuPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 import os 
 import sys
+
+import bs4
+from langchain import hub
+from langchain_community.document_loaders import WebBaseLoader
+from langchain_chroma import Chroma
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.runnables import RunnablePassthrough
+from langchain_openai import OpenAIEmbeddings
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 
 os.environ["OPENAI_API_KEY"]=st.secrets["openai_api_key"]
@@ -19,6 +23,11 @@ __import__('pysqlite3')
 
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 # Upload PDF files
+
+from langchain_openai import ChatOpenAI
+
+
+
 uploaded_files = st.file_uploader("Upload PDF files", type=["pdf"], accept_multiple_files=True)
 
 if uploaded_files:
@@ -54,7 +63,7 @@ if uploaded_files:
     prompt = ChatPromptTemplate.from_template(template)
 
     # LLM
-    model = ChatOpenAI()
+    model = ChatOpenAI(model="gpt-3.5-turbo-0125")
 
     # RAG chain
     chain = (
