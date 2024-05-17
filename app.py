@@ -78,10 +78,10 @@ if uploaded_files:
     )
 
     # Add typing for input
-    class Question(BaseModel):
-        __root__: str
+    #class Question(BaseModel):
+    #    __root__: str
 
-    chain = chain.with_types(input_type=Question)
+    #chain = chain.with_types(input_type=Question)
 
     # Input question
     query = st.text_input("Enter your question:")
