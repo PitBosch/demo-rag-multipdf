@@ -1,5 +1,4 @@
 import streamlit as st
-import os
 from langchain_community.chat_models import ChatOpenAI
 from langchain_community.embeddings import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
@@ -19,9 +18,12 @@ uploaded_files = st.file_uploader("Upload PDF files", type=["pdf"], accept_multi
 if uploaded_files:
     all_splits = []
     for uploaded_file in uploaded_files:
-        print(uploaded_file)
+        # Save the uploaded file temporarily
+        with open(uploaded_file.name, "wb") as f:
+            f.write(uploaded_file.getbuffer())
+
         # Load document
-        loader = PyMuPDFLoader(uploaded_file)
+        loader = PyMuPDFLoader(uploaded_file.name)
         data = loader.load()
 
         # Split document
