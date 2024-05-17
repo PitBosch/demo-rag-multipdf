@@ -7,3 +7,4 @@ langchain-chroma
 bs4
 pymupdf
 pysqlite3-binary
+chromadb
