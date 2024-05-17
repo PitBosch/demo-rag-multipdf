@@ -38,7 +38,7 @@ if uploaded_files:
 
         # Load document
         loader = PyMuPDFLoader(uploaded_file.name)
-        data = loader.load()
+        docs = loader.load()
 
         # Split document
         text_splitter = RecursiveCharacterTextSplitter(
