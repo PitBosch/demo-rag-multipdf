@@ -1,5 +1,4 @@
 import streamlit as st
-from langchain_community.chat_models import ChatOpenAI
 from langchain_community.document_loaders import PyMuPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 import os 
@@ -44,9 +43,10 @@ if uploaded_files:
         data = loader.load()
 
         # Split document
-        text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=0)
-        splits = text_splitter.split_documents(data)
-        all_splits.extend(splits)
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=1000, chunk_overlap=200, add_start_index=True
+        )
+        all_splits = text_splitter.split_documents(docs)
 
     # Add to vector store
     vectorstore = Chroma.from_documents(
