@@ -60,7 +60,7 @@ if uploaded_files:
 
     Question: {question}
     """
-    prompt = ChatPromptTemplate.from_template(template)
+    prompt = hub.pull("rlm/rag-prompt")
 
     # LLM
     model = ChatOpenAI(model="gpt-3.5-turbo-0125")
