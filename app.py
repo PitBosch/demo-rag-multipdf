@@ -37,7 +37,7 @@ if uploaded_files:
     vectorstore = Chroma.from_documents(
         documents=all_splits,
         collection_name="rag-chroma",
-        embedding=OpenAIEmbeddings(os.environ["OPENAI_API_KEY"]),
+        embedding=OpenAIEmbeddings(),
     )
     retriever = vectorstore.as_retriever()
 
@@ -50,7 +50,7 @@ if uploaded_files:
     prompt = ChatPromptTemplate.from_template(template)
 
     # LLM
-    model = ChatOpenAI(openai_api_key=st.openai_api_key)
+    model = ChatOpenAI()
 
     # RAG chain
     chain = (
