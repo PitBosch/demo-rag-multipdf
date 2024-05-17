@@ -6,7 +6,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
-import pinecone
+from pinecone import Pinecone
 from langchain_pinecone.vectorstores import PineconeVectorStore
 
 # Set API keys
