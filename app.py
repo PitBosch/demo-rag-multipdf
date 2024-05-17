@@ -66,10 +66,14 @@ if uploaded_files:
     model = ChatOpenAI(model="gpt-3.5-turbo-0125")
 
     # RAG chain
-    chain = (
-        RunnableParallel({"context": retriever, "question": RunnablePassthrough()})
+    def format_docs(docs):
+        return "\n\n".join(doc.page_content for doc in docs)
+    
+    
+    rag_chain = (
+        {"context": retriever | format_docs, "question": RunnablePassthrough()}
         | prompt
-        | model
+        | llm
         | StrOutputParser()
     )
 
