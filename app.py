@@ -10,7 +10,7 @@ from langchain_community.document_loaders import PyMuPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 import os 
 
-os.environ["OPENAI_API_KEY"]=st.
+os.environ["OPENAI_API_KEY"]=st.secrets["openai_api_key"]
 # Streamlit setup
 st.title("Question Answering App with LangChain")
 
