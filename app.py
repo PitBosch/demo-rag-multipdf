@@ -15,7 +15,7 @@ os.environ["PINECONE_API_KEY"] = st.secrets["pinecone_api_key"]
 
 # Initialize Pinecone
 pinecone = Pinecone(api_key=os.environ["PINECONE_API_KEY"])
-index_name = "question-answering"
+index_name = "question"
 if index_name not in pinecone.list_indexes():
     pinecone.create_index(index_name, dimension=1536)
 
