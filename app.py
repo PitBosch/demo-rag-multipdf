@@ -1,6 +1,5 @@
 import streamlit as st
 from langchain_community.chat_models import ChatOpenAI
-from langchain_community.vectorstores import Chroma
 from langchain_community.document_loaders import PyMuPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 import os 
@@ -9,7 +8,7 @@ import sys
 import bs4
 from langchain import hub
 from langchain_community.document_loaders import WebBaseLoader
-from langchain_chroma import Chroma
+
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 from langchain_openai import OpenAIEmbeddings
@@ -20,6 +19,7 @@ os.environ["OPENAI_API_KEY"]=st.secrets["openai_api_key"]
 # Streamlit setup
 st.title("Question Answering App with LangChain")
 __import__('pysqlite3')
+from langchain_chroma import Chroma
 
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 # Upload PDF files
