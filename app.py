@@ -1,9 +1,10 @@
 import streamlit as st
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain_community.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
-from langchain import OpenAI, VectorDBQA
+from langchain_community import OpenAI, VectorDBQA
 from langchain.chains import RetrievalQAWithSourcesChain
+from langchain_community.chat_models import ChatOpenAI
 import PyPDF2
 import os
 os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
