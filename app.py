@@ -8,7 +8,9 @@ from langchain_core.pydantic_v1 import BaseModel
 from langchain_core.runnables import RunnableParallel, RunnablePassthrough
 from langchain_community.document_loaders import PyMuPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+import os 
 
+os.environ["OPENAI_API_KEY"]=st.
 # Streamlit setup
 st.title("Question Answering App with LangChain")
 
@@ -35,7 +37,7 @@ if uploaded_files:
     vectorstore = Chroma.from_documents(
         documents=all_splits,
         collection_name="rag-chroma",
-        embedding=OpenAIEmbeddings(),
+        embedding=OpenAIEmbeddings(openai_api_key=st.openai_api_key),
     )
     retriever = vectorstore.as_retriever()
 
@@ -48,7 +50,7 @@ if uploaded_files:
     prompt = ChatPromptTemplate.from_template(template)
 
     # LLM
-    model = ChatOpenAI()
+    model = ChatOpenAI(openai_api_key=st.openai_api_key)
 
     # RAG chain
     chain = (
