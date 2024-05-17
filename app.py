@@ -37,7 +37,7 @@ if uploaded_files:
     vectorstore = Chroma.from_documents(
         documents=all_splits,
         collection_name="rag-chroma",
-        embedding=OpenAIEmbeddings(openai_api_key=st.openai_api_key),
+        embedding=OpenAIEmbeddings(os.environ["OPENAI_API_KEY"]),
     )
     retriever = vectorstore.as_retriever()
 
