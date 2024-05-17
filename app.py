@@ -2,7 +2,8 @@ import streamlit as st
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
-from langchain import OpenAI, VectorDBQA
+from langchain_community.llms import OpenAI
+from langchain.chains import VectorDBQA
 from langchain.chains import RetrievalQAWithSourcesChain
 from langchain_community.chat_models import ChatOpenAI
 import PyPDF2
