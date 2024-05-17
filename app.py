@@ -9,11 +9,15 @@ from langchain_core.runnables import RunnableParallel, RunnablePassthrough
 from langchain_community.document_loaders import PyMuPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 import os 
+import sys
+
 
 os.environ["OPENAI_API_KEY"]=st.secrets["openai_api_key"]
 # Streamlit setup
 st.title("Question Answering App with LangChain")
+__import__('pysqlite3')
 
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 # Upload PDF files
 uploaded_files = st.file_uploader("Upload PDF files", type=["pdf"], accept_multiple_files=True)
 
