@@ -1,8 +1,9 @@
 streamlit
 langchain
-langchain_community
-langchain_openai
-langchain_chroma
-langchain_text_splitters
+langchain-community
+langchainhub
+langchain-openai
+langchain-chroma
+bs4
 pymupdf
 pysqlite3-binary
