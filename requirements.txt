@@ -1,9 +1,8 @@
-streamlit
-PyPDF2
+langchain==0.0.279
+pinecone_client==2.2.2
+streamlit==1.26.0
+unstructured
+unstructured[pdf]
 openai
 chromadb
 tiktoken
-langchain
-typing-inspect==0.8.0
-typing_extensions==4.5.0
-pysqlite3-binary
