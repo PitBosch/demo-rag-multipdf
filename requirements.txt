@@ -3,6 +3,7 @@ langchain
 langchain-community
 langchainhub
 langchain-openai
-langchain-chroma
 pymupdf
-pysqlite3-binary
+langchain_pinecone
+
+
