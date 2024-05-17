@@ -5,7 +5,8 @@ from langchain.vectorstores import Chroma
 from langchain import OpenAI, VectorDBQA
 from langchain.chains import RetrievalQAWithSourcesChain
 import PyPDF2
-
+import os
+os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
 # This block of code imports pysqlite3 and sets it to sqlite3 to avoid potential conflicts
 __import__('pysqlite3')
 import sys
@@ -42,7 +43,7 @@ else:
     sources = textify_output[1]
     
     # Extract embeddings
-    key = st.secrets["openai_api_key"]
+    key = os.environ['OPENAI_API_KEY']
     embeddings = OpenAIEmbeddings(openai_api_key=key)
     
     # Vector store with metadata (page numbers)
