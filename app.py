@@ -14,7 +14,7 @@ os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
 os.environ["PINECONE_API_KEY"] = st.secrets["pinecone_api_key"]
 
 # Initialize Pinecone
-pinecone.init(api_key=os.environ["PINECONE_API_KEY"])
+pinecone = Pinecone(api_key=os.environ["PINECONE_API_KEY"])
 index_name = "question-answering"
 if index_name not in pinecone.list_indexes():
     pinecone.create_index(index_name, dimension=OpenAIEmbeddings().dimension)
