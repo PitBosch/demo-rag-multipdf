@@ -17,7 +17,7 @@ os.environ["PINECONE_API_KEY"] = st.secrets["pinecone_api_key"]
 pinecone = Pinecone(api_key=os.environ["PINECONE_API_KEY"])
 index_name = "question-answering"
 if index_name not in pinecone.list_indexes():
-    pinecone.create_index(index_name, dimension=OpenAIEmbeddings().dimensions)
+    pinecone.create_index(index_name, dimension=1536)
 
 # Vector store setup
 vectorstore = PineconeVectorStore(index_name=index_name, embedding_model=OpenAIEmbeddings())
