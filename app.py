@@ -41,7 +41,7 @@ if uploaded_files:
         all_splits.extend(text_splitter.split_documents(docs))
 
     # Add to vector store and create retriever
-    vectorstore.upsert_documents(all_splits)
+    vectorstore.add_texts(all_splits)
     retriever = vectorstore.as_retriever()
 
     # RAG prompt
