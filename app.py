@@ -20,7 +20,7 @@ index_name = "question-answering"
 # Vector store setup
 #vectorstore = PineconeVectorStore(index_name=index_name, embedding=OpenAIEmbeddings())
 
-st.title("Question Answering App with LangChain")
+st.title("Q&A Documenti Legali")
 
 # Upload PDF files
 uploaded_files = st.file_uploader("Upload PDF files", type=["pdf"], accept_multiple_files=True)
@@ -45,7 +45,7 @@ if uploaded_files:
     retriever = vectorstore.as_retriever()
 
     # RAG prompt
-    template = """Answer the question based only on the following context:
+    template = """Considerando che sei un avvocato e che tratterai documeti legali rispondi alla domanda basandoti su questo contesto:
     {context}
 
     Question: {question}
@@ -67,7 +67,7 @@ if uploaded_files:
     )
 
     # Input question
-    query = st.text_input("Enter your question:")
+    query = st.text_input("Fai una domanda ai tuoi documenti:")
     if query:
         answer = rag_chain.invoke(query)
-        st.write("Answer:", answer)
+        st.write("Risposta:", answer)
