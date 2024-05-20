@@ -18,7 +18,7 @@ pinecone = Pinecone(api_key=os.environ["PINECONE_API_KEY"])
 index_name = "question-answering"
 
 # Vector store setup
-vectorstore = PineconeVectorStore(index_name=index_name, embeddings=OpenAIEmbeddings())
+vectorstore = PineconeVectorStore(index_name=index_name, embedding=OpenAIEmbeddings())
 
 st.title("Question Answering App with LangChain")
 
