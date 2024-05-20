@@ -18,7 +18,7 @@ pinecone = Pinecone(api_key=os.environ["PINECONE_API_KEY"])
 index_name = "question-answering"
 
 # Vector store setup
-vectorstore = PineconeVectorStore(index_name=index_name, embedding=OpenAIEmbeddings())
+#vectorstore = PineconeVectorStore(index_name=index_name, embedding=OpenAIEmbeddings())
 
 st.title("Question Answering App with LangChain")
 
@@ -41,7 +41,7 @@ if uploaded_files:
         all_splits.extend(text_splitter.split_documents(docs))
 
     # Add to vector store and create retriever
-    vectorstore.add_texts(all_splits)
+    vectorstore = PineconeVectorStore.from_documents(all_splits, embedding=OpenAIEmbeddings(), index_name=index_name)
     retriever = vectorstore.as_retriever()
 
     # RAG prompt
